@@ -6,14 +6,14 @@ function App() {
   const fileInputRef = useRef();
   const [file, setFile] = useState("");
   const [result, setResult] = useState("");
-  const onUploadClick = () => {
-    fileInputRef.current.click();
+  const onUploadClick = async () => {
+    await fileInputRef.current.click();
   };
 
   useEffect(() => {
     const getImage = async () => {
       if (file) {
-        const data = new FormData();
+        const data = await new FormData();
         data.append("name", file.name);
         data.append("file", file);
         let res = await uploadFile(data);
